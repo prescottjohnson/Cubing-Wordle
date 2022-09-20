@@ -1,0 +1,38 @@
+import random
+
+wordbank = ['cube', 'edge', 'corner', 'turn', 'solve', 'rubiks', 'timer', 'stackmat', 'podium', 'wca', 'tps', 'auf', 'dnf', 'oll', 'pll', 'cfop', 
+'zbll', 'coll', 'edge', 'jperm', 'sune', 'antisune', 'cross', 'pair', 'parity', 'skewb', 'pyraminx', 'roux', 'scramble', 'xcross', 'inspection', 'puzzle']
+word = wordbank[random.randint(0, len(wordbank))]  #generates random word from the wordbank
+print('The word is ' + str(len(word)) + ' letters long:')
+
+
+def check_colors(guess):
+    turns.append(1)
+
+    for i in range(len(word)):
+        if guess[i] == word[i]:
+            print(guess[i] + ': green')
+            correct_letters.append(1)
+        elif guess[i] not in word:
+            print(guess[i] + ': gray')
+        else:
+            print(guess[i] + ': yellow')
+
+correct_letters = []
+correct_guess = False
+turns = []
+
+while correct_guess == False:
+    
+    guess = input()
+    check_colors(guess)
+    if len(correct_letters) == len(word):
+        break
+    elif len(turns) == 6:
+        print('Better luck next time! The word was ' + word +'.')
+        quit
+    else:
+        correct_letters.clear()
+
+print('congratulations you won')
+print('you won in ' + str(len(turns)) + ' turns!')
